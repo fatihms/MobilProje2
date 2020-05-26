@@ -1,0 +1,29 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.takvimuygulamasi.MainActivity">
+    <item
+        android:id="@+id/menuAbout"
+        android:icon="@drawable/ic_alarm"
+        android:title="Hakkında"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menuSettings"
+        android:icon="@drawable/ic_settings"
+        android:title="Ayarlar"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/list1"
+        android:title="Günlük Listele" />
+    <item
+        android:id="@+id/list2"
+        android:title="Haftalık Listele" />
+    <item
+        android:id="@+id/list3"
+        android:title="Aylık Listele" />
+    <item
+        android:id="@+id/list4"
+        android:title="Tüm Liste" />
+</menu>

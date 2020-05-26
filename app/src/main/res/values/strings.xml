@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TakvimUygulamasi</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="list_name">Name</string>
+    <string name="list_description">Description</string>
+    <string name="list_start_date">Start Date</string>
+    <string name="list_end_date">End Date</string>
+
+</resources>
