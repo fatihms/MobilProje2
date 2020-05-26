@@ -1,4 +1,10 @@
 # MobilProje2
 BLM3520 - Takvim/Etkinlik Uygulaması
 
-https://github.com/fatihms/MobilProje2/blob/master/screenshot/m1.PNG?raw=true
+Uygulamadan Ekran Görüntüleri
+https://github.com/fatihms/MobilProje2/tree/master/screenshot
+
+Uygulama Tanıtım Videosu
+https://youtu.be/BPKWuvbPESI
+
+Uygulama APK
