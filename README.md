@@ -8,3 +8,4 @@ Uygulama Tanıtım Videosu
 https://youtu.be/BPKWuvbPESI
 
 Uygulama APK
+https://github.com/fatihms/MobilProje2/tree/master/apk
