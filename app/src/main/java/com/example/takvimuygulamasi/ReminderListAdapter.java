@@ -77,7 +77,7 @@ public class ReminderListAdapter extends RecyclerView.Adapter<ReminderListAdapte
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, EventEditActivity.class);
-                intent.putExtra("id", reminder.getEventID());
+                intent.putExtra("id", re.getEventID());
                 context.startActivity(intent);
 
                 Toast.makeText(context, "Ekle", Toast.LENGTH_SHORT).show();

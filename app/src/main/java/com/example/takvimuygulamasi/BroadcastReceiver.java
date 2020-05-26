@@ -51,11 +51,11 @@ public class BroadcastReceiver extends android.content.BroadcastReceiver {
         r.play();
 
         notification
-                .setSmallIcon(R.mipmap.icon1)
+                .setSmallIcon(R.drawable.ic_notifications)
                 .setContentTitle(name)
                 .setContentText(description)
                 .setVibrate(vib)
-                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.icon2));
+                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.notification));
 
         NotificationManager notificationManager =
                 (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);

@@ -175,7 +175,7 @@
 
                 <Button
                     android:id="@+id/btn_saveEvent"
-                    android:layout_width="100dp"
+                    android:layout_width="125dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"
@@ -185,7 +185,7 @@
 
                 <Button
                     android:id="@+id/btn_shareEvent"
-                    android:layout_width="100dp"
+                    android:layout_width="125dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
@@ -280,7 +280,7 @@
 
                 <Button
                     android:id="@+id/btn_reminderAdd"
-                    android:layout_width="100dp"
+                    android:layout_width="125dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"

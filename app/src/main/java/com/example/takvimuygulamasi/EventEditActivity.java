@@ -14,6 +14,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.media.RingtoneManager;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -42,9 +43,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
@@ -71,7 +74,7 @@ public class EventEditActivity extends AppCompatActivity {
     private String s_Latitude, s_Longitude, freq = "", ringTone;
     long repeat;
     long idTemp;
-
+    int tk = 0;
     SharedP settings;
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
@@ -179,6 +182,9 @@ public class EventEditActivity extends AppCompatActivity {
             }
         });
 
+        String time = settings.getStringValue(getApplicationContext(), "timeKey", "");
+        tvReminderTime.setText(time);
+
         List<String> frequency = new ArrayList<>();
         frequency.add("Hatırlat Sıklıkları");
         frequency.add("Gün");
@@ -231,6 +237,7 @@ public class EventEditActivity extends AppCompatActivity {
                         reminderCalendar.set(Calendar.MINUTE, minute);
                         reminderCalendar.set(Calendar.SECOND, 0);
                         reminderCalendar.set(Calendar.MILLISECOND, 0);
+                        tk = 1;
                         tvReminderTime.setText(hourOfDay + ":" + minute);
                     }
                 }, reminderCalendar.get(Calendar.HOUR_OF_DAY), reminderCalendar.get(Calendar.MINUTE), true);
@@ -261,7 +268,6 @@ public class EventEditActivity extends AppCompatActivity {
                 int reqCode = Integer.parseInt(reminderCalendar.getTimeInMillis() / (1000 * 1000 * 1000) + new Random().nextInt(100) + "");
 
                 String ringType = settings.getStringValue(getApplicationContext(), "ringType", "ALARM");
-                String time = settings.getStringValue(getApplicationContext(), "timKey", "");
                 String freqType = settings.getStringValue(getApplicationContext(), "freqKey", "Gün");
 
                 if (freq.equals("")) {
@@ -278,6 +284,22 @@ public class EventEditActivity extends AppCompatActivity {
                         repeat = 360 * 1000 * 60 * 60 * 24;
                         freq = "Yıl";
                     }
+                }
+
+                SimpleDateFormat sdf = new SimpleDateFormat("kk:mm");
+                Date date = null;
+                try {
+                    date = sdf.parse(tvReminderTime.getText().toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                String tm = (String) DateFormat.format("kk", date);
+                String td = (String) DateFormat.format("mm", date);
+
+                if (tk == 0) {
+                    reminderCalendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(tm));
+                    reminderCalendar.set(Calendar.MINUTE, Integer.parseInt(td));
                 }
 
                 if (ringType.equals("ALARM")) {
@@ -391,8 +413,13 @@ public class EventEditActivity extends AppCompatActivity {
                 eventModel.setLocation("http://www.google.com/maps/place/" +
                         s_Latitude + "," + s_Longitude);
 
+                try {
+                    dbHelper.updateEvent(eventModel);
+                } catch (Exception e) {
+                    Toast.makeText(EventEditActivity.this, "Etkinlik düzenlenemedi", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
 
-                dbHelper.updateEvent(eventModel);
                 Toast.makeText(getApplicationContext(), "Etkinlik Düzenlendi", Toast.LENGTH_SHORT).show();
 
             }
